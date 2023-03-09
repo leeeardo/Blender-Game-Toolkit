@@ -28,7 +28,6 @@ classes = [
 
             GDToolkit_MeshChecker.Mesh_Checker,
             GDToolkit_MeshChecker.Check_Selected_Obj,
-            GDToolkit_MeshChecker.CheckedObjData,
             GDToolkit_MeshChecker.Set_Material,
             GDToolkit_MeshChecker.Select_Tris,
             GDToolkit_MeshChecker.Select_NGon,
@@ -37,15 +36,13 @@ classes = [
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    bpy.types.Scene.my_renamesettings = bpy.props.PointerProperty(type=GDToolkit_BatchExport.RenameSettings)
-    bpy.types.Scene.checkedobjdata = bpy.props.PointerProperty(type=GDToolkit_MeshChecker.CheckedObjData)
+    bpy.types.Scene.my_renamesettings = bpy.props.PointerProperty(type=GDToolkit_BatchExport.RenameSettings)  
     
 def unregister():
     for cls in classes:
         bpy.utils.unregister_class(cls)
-    #del bpy.types.Scene.checkedobjdata
     del bpy.types.Scene.my_renamesettings
-    del bpy.types.Scene.checkedobjdata
+
 
 if __name__ == "__main__":
     register()

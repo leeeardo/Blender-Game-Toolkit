@@ -271,22 +271,22 @@ class Select_Line(bpy.types.Operator):
         return {'FINISHED'}
 
 
-# classes = [
-#             Mesh_Checker,
-#             Check_Selected_Obj,
-#             Set_Material,
-#             Select_Tris,
-#             Select_NGon,
-#             Select_Line,
-#            ]
-# def register():
-#     for cls in classes:
-#         bpy.utils.register_class(cls)
+classes = [
+            Mesh_Checker,
+            Check_Selected_Obj,
+            Set_Material,
+            Select_Tris,
+            Select_NGon,
+            Select_Line,
+           ]
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
     
-# def unregister():
-#     for cls in classes:
-#         bpy.utils.unregister_class(cls)
+def unregister():
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
 
-# if __name__ == "__main__":
-#     register()
+if __name__ == "__main__":
+    register()
          

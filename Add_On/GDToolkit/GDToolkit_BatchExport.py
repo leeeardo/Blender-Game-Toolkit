@@ -64,7 +64,7 @@ class BATCH_EXPORT(bpy.types.Operator):
     bl_label = "Export"
     bl_idname = "mytoolkit.batchexport_operator"
     
-    path : bpy.props.StringProperty(name="File Name",default="")
+    path : bpy.props.StringProperty(name="Folder Name",default="")
     
     def execute(self, context):
         p = self.path
