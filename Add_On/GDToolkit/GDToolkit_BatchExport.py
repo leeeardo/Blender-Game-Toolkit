@@ -1,16 +1,5 @@
-bl_info = {
-    "name" : "My Toolkit_BatchExport",
-    "author" : "Leardo",
-    "version" : (1, 0),
-    "blender" : (3, 1, 0),
-    "location" : "View3D > Tool",
-    "warning" : "",
-    "wiki_url" : "",
-}
-
 import bpy 
 import os
-     
      
 class RenameSettings(bpy.types.PropertyGroup):
     prefix:bpy.props.StringProperty()
@@ -24,6 +13,7 @@ class MY_OT_OUTPUTBATCH(bpy.types.Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Leardo's Toolkit"
+    #bl_parent_id = "mytoolkit.gdtoolkit"
 
     
     def draw(self,context):
@@ -121,16 +111,3 @@ class BATCH_EXPORT(bpy.types.Operator):
     def invoke(self,context,event):
         return context.window_manager.invoke_props_dialog(self)
     
-        
-    
-classes=[MY_OT_OUTPUTBATCH,BATCH_EXPORT,BATCH_RENAME,BATCH_REMOVE_NAME,RenameSettings]
-def register():
-    for cls in classes:
-        bpy.utils.register_class(cls)
-    bpy.types.Scene.my_renamesettings = bpy.props.PointerProperty(type=RenameSettings)
-    
-def unregister():
-    for cls in classes:
-        bpy.utils.unregister_class(cls)
-if __name__ == "__main__":
-    register()

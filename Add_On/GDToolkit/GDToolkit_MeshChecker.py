@@ -1,12 +1,4 @@
-bl_info = {
-    "name" : "My Toolkit_MeshChecker",
-    "author" : "Leardo",
-    "version" : (1, 0),
-    "blender" : (3, 1, 0),
-    "location" : "View3D > Tool",
-    "warning" : "",
-    "wiki_url" : "",
-}
+
 
 import bpy
 import bmesh
@@ -24,6 +16,7 @@ class Mesh_Checker(bpy.types.Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Leardo's Toolkit"
+    #bl_parent_id = "mytoolkit.gdtoolkit"
 
     def draw(self, context):
         layout = self.layout
@@ -116,10 +109,10 @@ class Set_Material(bpy.types.Operator):
         print("NEED TO GEN")
         
         mat=bpy.data.materials.new(name="_Tris")
-        mat.diffuse_color=(1,0,0,1)
+        mat.diffuse_color=(1,0,1,1)
         
         mat = bpy.data.materials.new(name="_N_GON")
-        mat.diffuse_color=(1,1,0,1)
+        mat.diffuse_color=(1,0.2,0,1)
         bpy.data.materials.new(name="defaultMat")
     
     def SetMats(self,context):
@@ -237,29 +230,3 @@ class Select_Line(bpy.types.Operator):
         bpy.ops.mesh.select_mode(type="EDGE")
         return {'FINISHED'}
          
-
-
-classes = [
-            Mesh_Checker,
-            Check_Selected_Obj,
-            CheckedObjData,
-            Set_Material,
-            Select_Tris,
-            Select_NGon,
-            Select_Line
-            ]
-
-
-def register():
-    for cls in classes:
-        bpy.utils.register_class(cls)
-    bpy.types.Scene.checkedobjdata = bpy.props.PointerProperty(type=CheckedObjData)
-    
-def unregister():
-    for cls in classes:
-        bpy.utils.unregister_class(cls)
-    del bpy.types.Scene.checkedobjdata
-    del bpy.types.Scene.checkintdata
-
-if __name__ == "__main__":
-    register()
